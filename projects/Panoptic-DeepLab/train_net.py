@@ -29,7 +29,8 @@ from detectron2.projects.panoptic_deeplab import (
 )
 from detectron2.solver import get_default_optimizer_params
 from detectron2.solver.build import maybe_add_gradient_clipping
-
+#Added CMPE295
+import torch.distributed as dist
 
 def build_sem_seg_train_aug(cfg):
     augs = [
@@ -79,8 +80,7 @@ class Trainer(DefaultTrainer):
             # which only contains thing classes, thus we map the name of
             # panoptic datasets to their corresponding instance datasets.
             dataset_name_mapper = {
-                "coco_2017_val_panoptic": "coco_2017_val",
-                "coco_2017_val_100_panoptic": "coco_2017_val_100",
+               "fire_train": "fire_train",
             }
             evaluator_list.append(
                 COCOEvaluator(dataset_name_mapper[dataset_name], output_dir=output_folder)
@@ -148,7 +148,13 @@ def setup(args):
 
 def main(args):
     cfg = setup(args)
+    
+    #Added CMPE295
+    os.environ['MASTER_ADDR'] = 'localhost'
+    os.environ['MASTER_PORT'] = '12356'
 
+    #initialize the process group
+    dist.init_process_group("gloo", rank=0, world_size=1)
     if args.eval_only:
         model = Trainer.build_model(cfg)
         DetectionCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
