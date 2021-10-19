@@ -84,6 +84,9 @@ class COCOPanopticEvaluator(DatasetEvaluator):
                         # VOID region.
                         continue
                     pred_class = panoptic_label // label_divisor
+                    #Added CMPE295
+                    print("***********Inside Process method of panoptic_evaluation.py****************")
+                    print("*************Printing Pred Class************",pred_class)
                     isthing = (
                         pred_class in self._metadata.thing_dataset_id_to_contiguous_id.values()
                     )
