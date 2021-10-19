@@ -12,6 +12,10 @@ It supports a number of computer vision research projects and production applica
 </div>
 
 ### What's New
+
+
+
+
 * Includes new capabilities such as panoptic segmentation, Densepose, Cascade R-CNN, rotated bounding boxes, PointRend,
   DeepLab, etc.
 * Used as a library to support building [research projects](projects/) on top of it.
