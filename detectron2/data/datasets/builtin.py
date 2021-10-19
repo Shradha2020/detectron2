@@ -29,6 +29,9 @@ from .coco_panoptic import register_coco_panoptic, register_coco_panoptic_separa
 from .lvis import get_lvis_instances_meta, register_lvis_instances
 from .pascal_voc import register_pascal_voc
 
+#Added CMPE295
+from .Fire_panoptic import register_fire_panoptic
+
 # ==== Predefined datasets and splits for COCO ==========
 
 _PREDEFINED_SPLITS_COCO = {}
@@ -256,9 +259,11 @@ def register_all_ade20k(root):
 if __name__.endswith(".builtin"):
     # Assume pre-defined datasets live in `./datasets`.
     _root = os.getenv("DETECTRON2_DATASETS", "datasets")
-    register_all_coco(_root)
-    register_all_lvis(_root)
-    register_all_cityscapes(_root)
-    register_all_cityscapes_panoptic(_root)
-    register_all_pascal_voc(_root)
-    register_all_ade20k(_root)
+#Added CMPE295
+#     register_all_coco(_root)
+#     register_all_lvis(_root)
+#     register_all_cityscapes(_root)
+#     register_all_cityscapes_panoptic(_root)
+#     register_all_pascal_voc(_root)
+#     register_all_ade20k(_root)
+    register_fire_panoptic(_root)
