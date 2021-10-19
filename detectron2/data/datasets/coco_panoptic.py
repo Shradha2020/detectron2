@@ -83,6 +83,9 @@ def register_coco_panoptic(
         instances_json (str): path to the json instance annotation file
     """
     panoptic_name = name
+    #Added CMPE295
+    print("***********************Printing meta data from register_coco_panoptic() method in coco_panoptic.py***************************")
+    print(metadata)
     DatasetCatalog.register(
         panoptic_name,
         lambda: load_coco_panoptic_json(panoptic_json, image_root, panoptic_root, metadata),
