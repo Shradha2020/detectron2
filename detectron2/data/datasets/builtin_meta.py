@@ -281,11 +281,15 @@ def _get_coco_panoptic_separated_meta():
 
 
 def _get_builtin_metadata(dataset_name):
+    #Added CMPE295
+    print("****************************Inside _get_builtin_metadata() method of builtin_meta.py*************************************")
+    print("*********DatasetName*******",dataset_name)
     if dataset_name == "coco":
         return _get_coco_instances_meta()
     if dataset_name == "coco_panoptic_separated":
         return _get_coco_panoptic_separated_meta()
     elif dataset_name == "coco_panoptic_standard":
+        print("****************************Inside coco_panoptic_standard elif of builtin_meta.py*************************************")
         meta = {}
         # The following metadata maps contiguous id from [0, #thing categories +
         # #stuff categories) to their names and colors. We have to replica of the
